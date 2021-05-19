@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "616946132286",
+    "firebase_url": "https://miopizza-2cd4a-default-rtdb.firebaseio.com",
+    "project_id": "miopizza-2cd4a",
+    "storage_bucket": "miopizza-2cd4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616946132286:android:873b660c5128a9240cf86f",
+        "android_client_info": {
+          "package_name": "ru.korelyakov.miopizza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616946132286-m0r6s7qtr1drr0l1s8p0345kcc26oimj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDySL3R-o74Fyfo29anGj6fAzyNA5e5LXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616946132286-m0r6s7qtr1drr0l1s8p0345kcc26oimj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
