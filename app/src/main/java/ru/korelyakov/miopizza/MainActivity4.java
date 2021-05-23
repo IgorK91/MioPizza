@@ -49,10 +49,13 @@ public class MainActivity4 extends AppCompatActivity implements
          //   Intent intent = getIntent();
         //    int position = intent.getExtras().getInt("id");
 
-
+        Product product = OrderTools.AllProducts.get(position);
         name = findViewById(R.id.textView2);
-        name.setText(OrderTools.AllProducts.get(position).toString());
+        // подставим имя из продукта
+        name.setText(product.getName());
         structure = findViewById(R.id.textView3);
+        // подставим состав из продукта
+        structure.setText(product.getContent());
 
         countMain4 = findViewById(R.id.countMain4);
         countMain4.setText(Integer.toString(count));
