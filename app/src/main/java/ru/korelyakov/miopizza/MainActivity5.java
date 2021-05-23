@@ -18,7 +18,7 @@ public class MainActivity5 extends AppCompatActivity {
     SharedPreferences sPref, sPref2;
     public static String SAVED_NAME = "";
     public static String SAVED_NUMBER = "";
-    String nameClear, numberClear;
+    String clear = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +32,15 @@ public class MainActivity5 extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
 
         if(arguments != null && !arguments.isEmpty()){
-            nameClear = arguments.get("nameClear").toString();
-            numberClear = arguments.get("numberClear").toString();
-            name.setText(nameClear);
-            number.setText(numberClear);
+            if ((boolean)arguments.get("clearData")) {
+                name.setText(clear);
+                number.setText(clear);
+                saveText();
+            }
         }
         else{
             loadText();
-            if (!name.getText().toString().equals(" ") && !number.getText().toString().equals(" ")) {
+            if (!name.getText().toString().isEmpty() && !number.getText().toString().isEmpty()) {
                 CharSequence cc = name.getText();
                 OrderTools.Corzina.addToCart4(cc.toString());
                 CharSequence ss = number.getText();
