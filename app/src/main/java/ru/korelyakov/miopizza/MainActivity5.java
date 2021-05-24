@@ -31,12 +31,15 @@ public class MainActivity5 extends AppCompatActivity {
 
         Bundle arguments = getIntent().getExtras();
 
+        boolean isClear = false;
         if(arguments != null && !arguments.isEmpty()){
-            if ((boolean)arguments.get("clearData")) {
-                name.setText(clear);
-                number.setText(clear);
-                saveText();
-            }
+            isClear = (boolean)arguments.get("clearData");
+        }
+
+        if (isClear) {
+            name.setText(clear);
+            number.setText(clear);
+            saveText();
         }
         else{
             loadText();
