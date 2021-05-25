@@ -16,5 +16,9 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Контакты" />
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Выход" />
     </group>
 </menu>

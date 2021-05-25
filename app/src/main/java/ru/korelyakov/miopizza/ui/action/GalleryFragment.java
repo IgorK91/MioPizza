@@ -59,11 +59,8 @@ public class GalleryFragment extends Fragment {
            map = view.findViewById(R.id.map);
 
 
-
                 dialog=new ProgressDialog(getContext());
                 dialog.setMessage("Проверяем акции...");
-               // dialog.setCancelable(false);
-              //  dialog.setInverseBackgroundForced(false);
                 dialog.show();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -71,10 +68,6 @@ public class GalleryFragment extends Fragment {
                 dialog.dismiss();
             }
         },1000*2);
-
-
-
-
 
 
         try {
@@ -106,9 +99,6 @@ public class GalleryFragment extends Fragment {
     }
 }
 
-      //  FirebaseStorage storage = FirebaseStorage.getInstance();
-      //  StorageReference storageRef = storage.getReference();
-      //  StorageReference mountainsRef = storageRef.child("map.jpg");
 
 
 

@@ -2,6 +2,7 @@ package ru.korelyakov.miopizza;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -36,12 +37,15 @@ public class MainActivity extends AppCompatActivity {
     TextView zakazcount, client;
     String nameMain, numberMain;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         Bundle arguments = getIntent().getExtras();
         nameMain = arguments.get("name").toString();
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         zakazcount = header.findViewById(R.id.zakazcount);
         client =  header.findViewById(R.id.client);
         client.setText(nameMain);
+
 
         DatabaseReference mRef3 = FirebaseDatabase.getInstance().getReference().child("Клиенты").child(numberMain);
         mRef3.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -183,4 +188,5 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
