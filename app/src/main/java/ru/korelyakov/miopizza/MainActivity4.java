@@ -28,12 +28,14 @@ import ru.korelyakov.miopizza.ui.allmenu.UniversalAdapter;
 public class MainActivity4 extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
    // private UniversalAdapter mAdapter;
+   ImageView imageView;
    TextView name, structure, countMain4, coast, textCartItemCount;
    Integer count = 1;
    Button button1,button2;
    Integer itogOne, itogTwo;
    public  static Integer countPosition = 0;
    int position;
+    Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +51,17 @@ public class MainActivity4 extends AppCompatActivity implements
          //   Intent intent = getIntent();
         //    int position = intent.getExtras().getInt("id");
 
-
+        product = OrderTools.AllProducts.get(position);
         name = findViewById(R.id.textView2);
-        name.setText(OrderTools.AllProducts.get(position).toString());
+        // подставим имя из продукта
+        name.setText(product.getName());
         structure = findViewById(R.id.textView3);
+        // подставим состав из продукта
+        structure.setText(product.getContent());
+
+        imageView = findViewById(R.id.full_image_view);
+        // подставим картинку из продукта
+        imageView.setImageResource(product.getPicture());
 
         countMain4 = findViewById(R.id.countMain4);
         countMain4.setText(Integer.toString(count));
@@ -63,7 +72,8 @@ public class MainActivity4 extends AppCompatActivity implements
         button2 = findViewById(R.id.button2);
         button1.setBackgroundColor(Color.RED);
         button2.setBackgroundColor(Color.GREEN);
-        coast.setText("500");
+
+        coast.setText(product.getNormalCoast().toString());
 
         }
 
@@ -74,7 +84,7 @@ public class MainActivity4 extends AppCompatActivity implements
         button1.setBackgroundColor(Color.RED);
         button2.setBackgroundColor(Color.GREEN);
         countMain4.setText(Integer.toString(count));
-        coast.setText("500");
+        coast.setText(product.getNormalCoast().toString());
     }
 
     public void Big (View view) {
@@ -84,12 +94,14 @@ public class MainActivity4 extends AppCompatActivity implements
         button2.setBackgroundColor(Color.RED);
         button1.setBackgroundColor(Color.GREEN);
         countMain4.setText(Integer.toString(count));
-        coast.setText("790");
+        coast.setText(product.getBigCoast().toString());
     }
 
     public void Put (View view) {
         countPosition++;
-        OrderTools.Corzina.addToCart(MainActivity2.mAdapter.getItem(position));
+       // OrderTools.Corzina.addToCart(MainActivity2.mAdapter.getItem(position));
+        CharSequence zz = name.getText();
+        OrderTools.Corzina.addToCart7(zz.toString());
         CharSequence cc = coast.getText();
         CharSequence ss = countMain4.getText();
         OrderTools.Corzina.addToCart2(Integer.valueOf(cc.toString()));

@@ -12,11 +12,17 @@ public class Product {
 
     public Integer picture;
 
-    public Product(String name, ProductType productType, String content, Integer picture) {
+    public Integer normalCoast;
+
+    public Integer bigCoast;
+
+    public Product(String name, ProductType productType, String content, Integer picture, Integer normalCoast, Integer bigCoast) {
         this.name = name;
         this.productType = productType;
         this.content = content;
         this.picture = picture;
+        this.normalCoast = normalCoast;
+        this.bigCoast = bigCoast;
     }
 
 
@@ -52,6 +58,23 @@ public class Product {
     public void setPicture(Integer picture) {
         this.picture = picture;
     }
+
+    public Integer getNormalCoast() {
+        return normalCoast;
+    }
+
+    public void setNormalCoast(Integer normalCoast) {
+        this.normalCoast = normalCoast;
+    }
+
+    public Integer getBigCoast() {
+        return bigCoast;
+    }
+
+    public void setBigCoast(Integer bigCoast) {
+        this.bigCoast = bigCoast;
+    }
+
 
     @Override
     public String toString() {

@@ -27,8 +27,7 @@ public class ExitFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Intent intent = new Intent(getContext(), MainActivity5.class);
-        intent.putExtra("nameClear","____________");
-        intent.putExtra("numberClear","____________");
+        intent.putExtra("clearData", true);
         startActivity(intent);
     }
 }

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -26,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import ru.korelyakov.miopizza.product.OrderTools;
 import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.product.ProductType;
 
@@ -34,7 +36,7 @@ import static ru.korelyakov.miopizza.product.OrderTools.*;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    TextView zakazcount, client;
+    TextView zakazcount, client, textCartItemCount;
     String nameMain, numberMain;
 
 
@@ -89,45 +91,45 @@ public class MainActivity extends AppCompatActivity {
 
         // пример создания продукта и добавления в список всех продуктов
         AllProducts.add(new Product("Pizza Mio", ProductType.Pizza, "Тесто, сыр моцарелла, соус томатный, куриное филе, " +
-                "пеперони,бекон, ветчина", R.drawable.card1));
-        AllProducts.add(new Product("Polo Pesto", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, куриное филе, грибы, песто соус ", R.drawable.card1));
-        AllProducts.add(new Product("Болоньезе", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, фарш домашний, лук красный, морковь", R.drawable.card1));
+                "пеперони,бекон, ветчина", R.drawable.card1, 500,790));
+        AllProducts.add(new Product("Polo Pesto", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, куриное филе, грибы, песто соус ", R.drawable.card1,360,620));
+        AllProducts.add(new Product("Болоньезе", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, фарш домашний, лук красный, морковь", R.drawable.card2,370,630));
         AllProducts.add(new Product("Бони и Клайд", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, купаты, пеперони," +
-                "охотничьи колбаски, лук красный, холопение", R.drawable.card1));
-        AllProducts.add(new Product("Грибная", ProductType.Pizza, "Тесто, соус цезарь, сыр моцарелла, грибы, томаты черри, песто соус", R.drawable.card1));
-        AllProducts.add(new Product("Карбонара", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, пармезан, бекон, яйцо", R.drawable.card1));
-        AllProducts.add(new Product("Маргарита", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, томаты черри", R.drawable.card1));
-        AllProducts.add(new Product("Пеперони", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, пеперони", R.drawable.card1));
-        AllProducts.add(new Product("Рыбная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, лосось, томаты черри", R.drawable.card1));
-        AllProducts.add(new Product("С ветчиной и грибами", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, ветчина, грибы", R.drawable.card1));
-        AllProducts.add(new Product("Четыре сыра", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, эмменталь, пармезан, горгонзола, песто соус", R.drawable.card1));
-        AllProducts.add(new Product("Пицца Странная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, ветчина, ананас", R.drawable.card1));
+                "охотничьи колбаски, лук красный, холопение", R.drawable.card1,470,740));
+        AllProducts.add(new Product("Грибная", ProductType.Pizza, "Тесто, соус цезарь, сыр моцарелла, грибы, томаты черри, песто соус", R.drawable.card1,360,620));
+        AllProducts.add(new Product("Карбонара", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, пармезан, бекон, яйцо", R.drawable.card1,380,640));
+        AllProducts.add(new Product("Маргарита", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, томаты черри", R.drawable.card1,300,500));
+        AllProducts.add(new Product("Пеперони", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, пеперони", R.drawable.card1,370,630));
+        AllProducts.add(new Product("Рыбная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, лосось, томаты черри", R.drawable.card1,420,710));
+        AllProducts.add(new Product("С ветчиной и грибами", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, ветчина, грибы", R.drawable.card1,410,690));
+        AllProducts.add(new Product("Четыре сыра", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, эмменталь, пармезан, горгонзола, песто соус", R.drawable.card1,380,640));
+        AllProducts.add(new Product("Пицца Странная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, ветчина, ананас", R.drawable.card1,380,640));
         AllProducts.add(new Product("Цезарь", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла, куриное филе, айсберг, " +
-                "томаты черри, яйцо перепелиное, пармезан", R.drawable.card1));
-        AllProducts.add(new Product("Овощная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла,сладкий перец, зеленый огурец, кукуруза, томаты черри", R.drawable.card1));
-        AllProducts.add(new Product("Маленький кальцоне с ветчиной и грибами", ProductType.Calzone, "", R.drawable.card1));
-        AllProducts.add(new Product("Маленький кальцоне с грибами", ProductType.Calzone, "", R.drawable.card1));
-        AllProducts.add(new Product("Маленький кальцоне с ветчиной", ProductType.Calzone, "", R.drawable.card1));
-        AllProducts.add(new Product("Кальцоне", ProductType.Calzone, "", R.drawable.card1));
-        AllProducts.add(new Product("Маково-черничный", ProductType.Dessert, "", R.drawable.card1));
-        AllProducts.add(new Product("Медово-карамельный", ProductType.Dessert, "", R.drawable.card1));
-        AllProducts.add(new Product("Творожно-кокосовое", ProductType.Dessert, "", R.drawable.card1));
-        AllProducts.add(new Product("Кэррот кейк", ProductType.Dessert, "", R.drawable.card1));
-        AllProducts.add(new Product("Вода Бон Аква", ProductType.Drink, "", R.drawable.card1));
-        AllProducts.add(new Product("Вода Эвиан", ProductType.Drink, "", R.drawable.card1));
-        AllProducts.add(new Product("Coca Cola", ProductType.Drink, "", R.drawable.card1));
-        AllProducts.add(new Product("Сок Rioba", ProductType.Drink, "", R.drawable.card1));
-        AllProducts.add(new Product("Паста с купатами", ProductType.Pasta, "", R.drawable.card1));
-        AllProducts.add(new Product("Паста Болоньезе", ProductType.Pasta, "", R.drawable.card1));
-        AllProducts.add(new Product("Паста Карбонара", ProductType.Pasta, "", R.drawable.card1));
-        AllProducts.add(new Product("Паста al salmon", ProductType.Pasta, "", R.drawable.card1));
-        AllProducts.add(new Product("Греческий", ProductType.Salad, "", R.drawable.card1));
-        AllProducts.add(new Product("Цезарь с курицей", ProductType.Salad, "", R.drawable.card1));
-        AllProducts.add(new Product("Капрезе", ProductType.Salad, "", R.drawable.card1));
-        AllProducts.add(new Product("Томатный", ProductType.Soup, "", R.drawable.card1));
-        AllProducts.add(new Product("Сырный", ProductType.Soup, "", R.drawable.card1));
-        AllProducts.add(new Product("Рыбный", ProductType.Soup, "", R.drawable.card1));
-        AllProducts.add(new Product("Грибной", ProductType.Soup, "", R.drawable.card1));
+                "томаты черри, яйцо перепелиное, пармезан", R.drawable.card1,370,630));
+        AllProducts.add(new Product("Овощная", ProductType.Pizza, "Тесто, соус томатный,сыр моцарелла,сладкий перец, зеленый огурец, кукуруза, томаты черри", R.drawable.card1,320,540));
+        AllProducts.add(new Product("Маленький кальцоне с ветчиной и грибами", ProductType.Calzone, "Тесто, соус томатный,сыр моцарелла, ветчина, грибы", R.drawable.card1,170,170));
+        AllProducts.add(new Product("Маленький кальцоне с грибами", ProductType.Calzone, "Тесто, соус томатный,сыр моцарелла, грибы", R.drawable.card1,120,120));
+        AllProducts.add(new Product("Маленький кальцоне с ветчиной", ProductType.Calzone, "Тесто, соус томатный,сыр моцарелла, ветчина", R.drawable.card1,150,150));
+        AllProducts.add(new Product("Кальцоне", ProductType.Calzone, "Тесто, соус томатный,сыр моцарелла, ветчина, грибы, яйцо", R.drawable.card1,350,350));
+        AllProducts.add(new Product("Маково-черничный", ProductType.Dessert, "", R.drawable.card1,140,140));
+        AllProducts.add(new Product("Медово-карамельный", ProductType.Dessert, "", R.drawable.card1,140,140));
+        AllProducts.add(new Product("Творожно-кокосовое", ProductType.Dessert, "", R.drawable.card1,140,140));
+        AllProducts.add(new Product("Кэррот кейк", ProductType.Dessert, "", R.drawable.card1,140,140));
+        AllProducts.add(new Product("Вода Бон Аква", ProductType.Drink, "", R.drawable.card1,50,100));
+        AllProducts.add(new Product("Вода Эвиан", ProductType.Drink, "", R.drawable.card1,240,240));
+        AllProducts.add(new Product("Coca Cola", ProductType.Drink, "", R.drawable.card1,69,110));
+        AllProducts.add(new Product("Сок Rioba", ProductType.Drink, "", R.drawable.card1,80,160));
+        AllProducts.add(new Product("Паста с купатами", ProductType.Pasta, "", R.drawable.card1,260,260));
+        AllProducts.add(new Product("Паста Болоньезе", ProductType.Pasta, "", R.drawable.card1,250,250));
+        AllProducts.add(new Product("Паста Карбонара", ProductType.Pasta, "", R.drawable.card1,280,280));
+        AllProducts.add(new Product("Паста al salmon", ProductType.Pasta, "", R.drawable.card1,290,290));
+        AllProducts.add(new Product("Греческий", ProductType.Salad, "", R.drawable.card1,200,200));
+        AllProducts.add(new Product("Цезарь с курицей", ProductType.Salad, "", R.drawable.card1,280,280));
+        AllProducts.add(new Product("Капрезе", ProductType.Salad, "", R.drawable.card1,240,240));
+        AllProducts.add(new Product("Томатный", ProductType.Soup, " ", R.drawable.card1,200,200));
+        AllProducts.add(new Product("Сырный", ProductType.Soup, " ", R.drawable.card1,260,260));
+        AllProducts.add(new Product("Рыбный", ProductType.Soup, " ", R.drawable.card1,280,280));
+        AllProducts.add(new Product("Грибной", ProductType.Soup, " ", R.drawable.card1,250,250));
     }
 
     /*private static final Product[] mContactsCalzone = {"Кальцоне", "Маленький кальцоне с грибами",
@@ -157,11 +159,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.main, menu);
         final MenuItem menuItem = menu.findItem(R.id.cart);
-
         View actionView = MenuItemCompat.getActionView(menuItem);
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+        try{
+            textCartItemCount.setText(OrderTools.Corzina.getItems6().toString());
+        }
+        catch (Exception e){
+
+        }
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;
@@ -189,4 +196,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

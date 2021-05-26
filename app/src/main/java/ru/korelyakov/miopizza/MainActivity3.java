@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ru.korelyakov.miopizza.product.OrderTools;
+import ru.korelyakov.miopizza.product.Product;
+import ru.korelyakov.miopizza.ui.menu.MenuFragment;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -44,7 +46,7 @@ public class MainActivity3 extends AppCompatActivity {
         numberMain3= findViewById(R.id.numberMain3);
         adress = findViewById(R.id.adress);
 
-        order.setText(OrderTools.Corzina.getItems().toString());
+        order.setText(OrderTools.Corzina.getItems7().toString());
         coast.setText(OrderTools.Corzina.getItems2().toString());
         count.setText(OrderTools.Corzina.getItems3().toString());
         nameMain3.setText(OrderTools.Corzina.getItems4());
@@ -89,10 +91,10 @@ public class MainActivity3 extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("Заказы").push();
         myRef.setValue(List);
-        ShowGameOver();
+        ShowOver();
     }
 
-    public void ShowGameOver() {
+    public void ShowOver() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity3.this);
         builder.setTitle("Заказ получен!")
                 .setMessage("Мы свяжемся с Вами в течении 10 минут для подтверждения заказа.")
@@ -101,13 +103,16 @@ public class MainActivity3 extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
-                                Intent intent = new Intent(MainActivity3.this, MainActivity2.class);
+                                OrderTools.Corzina.cleanCart();
+                                Intent intent = new Intent(MainActivity3.this, MainActivity.class);
+                                intent.putExtra("name", nameMain3.getText().toString());
+                                intent.putExtra("number", numberMain3.getText().toString());
                                 startActivity(intent);
+                                finish();
                             }
                         });
         AlertDialog alert = builder.create();
         alert.show();
-
     }
 }
 

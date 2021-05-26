@@ -15,6 +15,7 @@ public class Corzina implements Serializable {
     private String name;
     private String number;
     private Integer countPosition;
+    private List<String> nameList = new ArrayList<>();
 
     public void addToCart(Product product) {
         productList.add(product);
@@ -26,6 +27,9 @@ public class Corzina implements Serializable {
 
     public void cleanCart() {
         productList.clear();
+        nameList.clear();
+        coastList.clear();
+        countList.clear();
     }
 
     public Product getItem(int index) {
@@ -78,5 +82,13 @@ public class Corzina implements Serializable {
 
     public Integer getItems6() {
         return countPosition;
+    }
+
+    public void addToCart7(String string) {
+        nameList.add(string);
+    }
+
+    public List<String> getItems7() {
+        return nameList;
     }
 }

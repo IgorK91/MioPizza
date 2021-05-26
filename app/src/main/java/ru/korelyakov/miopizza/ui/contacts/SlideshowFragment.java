@@ -22,7 +22,7 @@ import ru.korelyakov.miopizza.R;
 
 public class SlideshowFragment extends Fragment {
 
-    TextView textView;
+    TextView textView, textView2;
     private SlideshowViewModel slideshowViewModel;
 
     public SlideshowFragment(){
@@ -36,11 +36,19 @@ public class SlideshowFragment extends Fragment {
                 new ViewModelProvider(this).get(SlideshowViewModel.class);
 
         textView = view.findViewById(R.id.text_slideshow);
+        textView2 = view.findViewById(R.id.text_slideshow2);
 
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
+            }
+        });
+
+        slideshowViewModel.getText2().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                textView2.setText(s);
             }
         });
     }

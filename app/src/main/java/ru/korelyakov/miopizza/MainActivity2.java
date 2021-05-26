@@ -78,13 +78,49 @@ public class MainActivity2 extends AppCompatActivity implements
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                mSelectText.setText("Выбранный элемент: "
-                        + mAdapter.getItem(position));
               //  OrderTools.Corzina.addToCart(mAdapter.getItem(position));
-                Intent i = new Intent(getApplicationContext(),
-                        MainActivity4.class);
-                i.putExtra("id",position);
-                startActivity(i);
+                if(productType.equals(ProductType.Pizza)){
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Soup)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+33);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Calzone)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+14);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Salad)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+30);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Dessert)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+18);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Drink)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+22);
+                    startActivity(i);
+                }
+                else if(productType.equals(ProductType.Pasta)) {
+                    Intent i = new Intent(getApplicationContext(),
+                            MainActivity4.class);
+                    i.putExtra("id",position+26);
+                    startActivity(i);
+                }
             }
         });
     }
@@ -132,4 +168,5 @@ public class MainActivity2 extends AppCompatActivity implements
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

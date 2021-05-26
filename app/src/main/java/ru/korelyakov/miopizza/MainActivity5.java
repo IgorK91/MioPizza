@@ -13,12 +13,12 @@ import android.widget.Toast;
 import ru.korelyakov.miopizza.product.OrderTools;
 
 public class MainActivity5 extends AppCompatActivity {
-   public static EditText name, number;
+    public static EditText name, number;
     Button run;
     SharedPreferences sPref, sPref2;
     public static String SAVED_NAME = "";
     public static String SAVED_NUMBER = "";
-    String nameClear, numberClear;
+    String clear = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +31,21 @@ public class MainActivity5 extends AppCompatActivity {
 
         Bundle arguments = getIntent().getExtras();
 
+        boolean isClear = false;
         if(arguments != null && !arguments.isEmpty()){
-            nameClear = arguments.get("nameClear").toString();
-            numberClear = arguments.get("numberClear").toString();
-            name.setText(nameClear);
-            number.setText(numberClear);
+            Object isClearFromBundle = arguments.get("clearData");
+            if (isClearFromBundle != null)
+                isClear = (boolean)isClearFromBundle;
+        }
+
+        if (isClear) {
+            name.setText(clear);
+            number.setText(clear);
+            saveText();
         }
         else{
             loadText();
-            if (!name.getText().toString().equals(" ") && !number.getText().toString().equals(" ")) {
+            if (!name.getText().toString().isEmpty() && !number.getText().toString().isEmpty() &&  !name.getText().toString().equals(" ") && !number.getText().toString().equals(" ")) {
                 CharSequence cc = name.getText();
                 OrderTools.Corzina.addToCart4(cc.toString());
                 CharSequence ss = number.getText();
