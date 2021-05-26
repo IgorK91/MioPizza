@@ -25,4 +25,4 @@ public class SlideshowViewModel extends ViewModel {
     }
 
 }
-//gg
+//g
