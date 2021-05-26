@@ -53,3 +53,4 @@ public class SlideshowFragment extends Fragment {
         });
     }
 }
+//gg

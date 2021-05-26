@@ -97,6 +97,6 @@ public class MainActivity5 extends AppCompatActivity {
         String savedNumber = sPref2.getString(SAVED_NUMBER, "");
         name.setText(savedName);
         number.setText(savedNumber);
-        //cldf
+        //cld
     }
 }
