@@ -53,74 +53,72 @@
         android:layout_marginLeft="205dp"
         android:text="40 см" />
 
-
-
     </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/firstButtonPanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="570dp"
-            android:verticalSpacing="100dp"
-            android:layout_marginRight="100dp"
-            android:layout_marginLeft="100dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button4"
-                android:layout_width="76dp"
-                android:layout_height="wrap_content"
-                android:onClick="Plus"
-                android:background="@color/white"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/countMain4"
-                android:layout_width="58dp"
-                android:layout_height="50dp"
-                android:text=" "
-                android:textColor="#FBFAFA" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Minus"
-                android:background="@color/white"
-                android:text="-" />
-
-        </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/secondButtonPanel"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
         android:layout_marginTop="620dp"
-        android:layout_marginRight="50dp"
         android:verticalSpacing="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+            android:id="@+id/button4"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            app:backgroundTint="#FFFFFF"
+            android:text="+"
+            android:textSize="20sp"
+            android:onClick="Plus"
+            app:cornerRadius="28dp" />
+
+        <TextView
+            android:id="@+id/countMain4"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text=" "
+            android:gravity="center"
+            android:textColor="#FBFAFA" />
+
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+            android:id="@+id/button5"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            app:backgroundTint="#FFFFFF"
+            android:text="-"
+            android:textSize="20sp"
+            android:onClick="Minus"
+            app:cornerRadius="28dp" />
+
         <TextView
             android:id="@+id/coast"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text=" "
             android:textColor="#FBFAFA" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:id="@+id/button3"
-            android:layout_width="204dp"
-            android:layout_height="wrap_content"
+            app:backgroundTint="#FFFFFF"
+            android:layout_width="130dp"
+            android:layout_height="52dp"
             android:onClick="Put"
-            android:background="@color/white"
-            android:text="В корзину" />
+            android:text="В корзину"
+            app:cornerRadius="48dp"/>
 
     </LinearLayout>
 
