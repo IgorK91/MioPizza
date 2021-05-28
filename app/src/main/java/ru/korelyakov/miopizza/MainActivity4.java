@@ -6,6 +6,7 @@ import androidx.core.view.MenuItemCompat;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,20 +37,32 @@ public class MainActivity4 extends AppCompatActivity implements
    public  static Integer countPosition = 0;
    int position;
     Product product;
+    private int currentApiVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
-     //   CharSequence zz = textCartItemCount.getText();
-     //   countPosition = Integer.valueOf(zz.toString());
+        currentApiVersion = android.os.Build.VERSION.SDK_INT;
+        final int flags =  View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(flags);
+            final View decorView = getWindow().getDecorView();
+            decorView
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                        @Override
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                                decorView.setSystemUiVisibility(flags);
+                            }
+                        }
+                    });
+        }
+
 
         Bundle arguments = getIntent().getExtras();
         position = arguments.getInt("id");
-
-         //   Intent intent = getIntent();
-        //    int position = intent.getExtras().getInt("id");
 
         product = OrderTools.AllProducts.get(position);
         name = findViewById(R.id.textView2);
@@ -71,7 +84,7 @@ public class MainActivity4 extends AppCompatActivity implements
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button1.setBackgroundColor(Color.RED);
-        button2.setBackgroundColor(Color.GREEN);
+        button2.setBackgroundColor(Color.WHITE);
 
         coast.setText(product.getNormalCoast().toString());
 
@@ -82,7 +95,7 @@ public class MainActivity4 extends AppCompatActivity implements
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button1.setBackgroundColor(Color.RED);
-        button2.setBackgroundColor(Color.GREEN);
+        button2.setBackgroundColor(Color.WHITE);
         countMain4.setText(Integer.toString(count));
         coast.setText(product.getNormalCoast().toString());
     }
@@ -92,7 +105,7 @@ public class MainActivity4 extends AppCompatActivity implements
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button2.setBackgroundColor(Color.RED);
-        button1.setBackgroundColor(Color.GREEN);
+        button1.setBackgroundColor(Color.WHITE);
         countMain4.setText(Integer.toString(count));
         coast.setText(product.getBigCoast().toString());
     }

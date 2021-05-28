@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/fon"
+    tools:context=".MainActivity4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/full_image_view"
         android:layout_width="match_parent"
         android:scaleType="centerCrop"
-        android:layout_height="328dp" />
+        android:layout_marginTop = "40dp"
+        android:layout_height="400dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="30dp"
+        android:textColor="#FBFAFA"
         android:text="Pizza Mio" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
+        android:textColor="#FBFAFA"
+        android:gravity="center"
         android:text=" " />
 
     <Button
         android:id="@+id/button1"
         android:onClick="Normal"
         android:layout_width="205dp"
+        android:textColor="#000000"
         android:layout_height="wrap_content"
         android:text="30 см" />
 
@@ -33,52 +47,81 @@
         android:id="@+id/button2"
         android:onClick="Big"
         android:layout_width="205dp"
+        android:textColor="#000000"
         android:layout_height="wrap_content"
         android:layout_marginTop="-48dp"
         android:layout_marginLeft="205dp"
         android:text="40 см" />
 
-    <TextView
-        android:id="@+id/countMain4"
-        android:layout_width="100dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="20dp"
-        android:text=" " />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
-        android:onClick="Put"
-        android:layout_marginTop="80dp"
-        android:text="В корзину" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="50dp"
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firstButtonPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="570dp"
+            android:verticalSpacing="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button4"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:onClick="Plus"
+                android:background="@color/white"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/countMain4"
+                android:layout_width="58dp"
+                android:layout_height="50dp"
+                android:text=" "
+                android:textColor="#FBFAFA" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="Minus"
+                android:background="@color/white"
+                android:text="-" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/secondButtonPanel"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="-175dp"
-        android:onClick="Plus"
-        android:text="+" />
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="620dp"
+        android:layout_marginRight="50dp"
+        android:verticalSpacing="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="-50dp"
-        android:onClick="Minus"
-        android:text="-" />
+        <TextView
+            android:id="@+id/coast"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textColor="#FBFAFA" />
 
-    <TextView
-        android:id="@+id/coast"
-        android:layout_width="100dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="20dp"
-        android:text=" " />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button3"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:onClick="Put"
+            android:background="@color/white"
+            android:text="В корзину" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

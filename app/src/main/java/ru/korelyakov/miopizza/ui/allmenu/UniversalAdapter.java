@@ -39,7 +39,7 @@ public class UniversalAdapter extends BaseAdapter {
         label.setText(mContacts.get(position).toString());
         label.setGravity(Gravity.CENTER);
         label.setTextSize(30);
-        label.setTextColor(Color.parseColor("#FF0033"));
+        label.setTextColor(Color.parseColor("#FFFFFFFF"));
         return (convertView);
     }
 
