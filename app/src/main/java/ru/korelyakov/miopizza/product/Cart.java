@@ -1,4 +1,4 @@
-package ru.korelyakov.miopizza;
+package ru.korelyakov.miopizza.product;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.product.ProductType;
 
-public class Corzina implements Serializable {
+public class Cart implements Serializable {
 
     private List<Product> productList = new ArrayList<>();
     private List<Integer> coastList = new ArrayList<>();

@@ -12,14 +12,14 @@ import java.util.List;
 
 import ru.korelyakov.miopizza.product.Product;
 
-public class UniversalAdapter extends BaseAdapter {
+public class MenuAdapter extends BaseAdapter {
 
     private final List<Product> mContacts;
 
     Context mContext;
 
     // Конструктор
-    public UniversalAdapter(Context context, List<Product> mContacts) {
+    public MenuAdapter(Context context, List<Product> mContacts) {
         super();
         this.mContacts = mContacts;
         // TODO Auto-generated constructor stub

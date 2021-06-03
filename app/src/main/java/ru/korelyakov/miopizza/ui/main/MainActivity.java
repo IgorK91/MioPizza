@@ -1,15 +1,11 @@
-package ru.korelyakov.miopizza;
+package ru.korelyakov.miopizza.ui.main;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +24,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import ru.korelyakov.miopizza.ui.order.OrderActivity;
+import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
 import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.product.ProductType;
@@ -180,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
         try{
-            textCartItemCount.setText(OrderTools.Corzina.getItems6().toString());
+            textCartItemCount.setText(OrderTools.Cart.getItems6().toString());
         }
         catch (Exception e){
 
@@ -205,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart:
-                Intent intent = new Intent(this, MainActivity3.class);
+                Intent intent = new Intent(this, OrderActivity.class);
                 startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);

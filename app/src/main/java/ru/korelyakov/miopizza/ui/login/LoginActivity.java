@@ -1,11 +1,9 @@
-package ru.korelyakov.miopizza;
+package ru.korelyakov.miopizza.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ru.korelyakov.miopizza.ui.main.MainActivity;
+import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
 
-public class MainActivity5 extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     public static EditText name, number;
     Button run;
     SharedPreferences sPref, sPref2;
@@ -27,7 +27,7 @@ public class MainActivity5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_login);
 
         name = findViewById(R.id.name);
         number = findViewById(R.id.number);
@@ -67,9 +67,9 @@ public class MainActivity5 extends AppCompatActivity {
             loadText();
             if (!name.getText().toString().isEmpty() && !number.getText().toString().isEmpty() &&  !name.getText().toString().equals(" ") && !number.getText().toString().equals(" ")) {
                 CharSequence cc = name.getText();
-                OrderTools.Corzina.addToCart4(cc.toString());
+                OrderTools.Cart.addToCart4(cc.toString());
                 CharSequence ss = number.getText();
-                OrderTools.Corzina.addToCart5(ss.toString());
+                OrderTools.Cart.addToCart5(ss.toString());
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("name", name.getText().toString());
                 intent.putExtra("number", number.getText().toString());
@@ -87,9 +87,9 @@ public class MainActivity5 extends AppCompatActivity {
         }
         else{
             CharSequence cc = name.getText();
-            OrderTools.Corzina.addToCart4(cc.toString());
+            OrderTools.Cart.addToCart4(cc.toString());
             CharSequence ss = number.getText();
-            OrderTools.Corzina.addToCart5(ss.toString());
+            OrderTools.Cart.addToCart5(ss.toString());
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("name",name.getText().toString());
             intent.putExtra("number",number.getText().toString());

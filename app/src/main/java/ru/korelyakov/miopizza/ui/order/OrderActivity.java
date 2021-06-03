@@ -1,4 +1,4 @@
-package ru.korelyakov.miopizza;
+package ru.korelyakov.miopizza.ui.order;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +9,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -22,11 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
-import ru.korelyakov.miopizza.product.Product;
-import ru.korelyakov.miopizza.ui.menu.MenuFragment;
+import ru.korelyakov.miopizza.ui.main.MainActivity;
 
-public class MainActivity3 extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
 
     TextView order, coast, structure, nameMain3, numberMain3, count, adress;
     SharedPreferences sPref;
@@ -37,7 +34,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_order);
 
         currentApiVersion = android.os.Build.VERSION.SDK_INT;
         final int flags =  View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
@@ -63,11 +60,11 @@ public class MainActivity3 extends AppCompatActivity {
         numberMain3= findViewById(R.id.numberMain3);
         adress = findViewById(R.id.adress);
 
-        order.setText(OrderTools.Corzina.getItems7().toString());
-        coast.setText(OrderTools.Corzina.getItems2().toString());
-        count.setText(OrderTools.Corzina.getItems3().toString());
-        nameMain3.setText(OrderTools.Corzina.getItems4());
-        numberMain3.setText(OrderTools.Corzina.getItems5());
+        order.setText(OrderTools.Cart.getItems7().toString());
+        coast.setText(OrderTools.Cart.getItems2().toString());
+        count.setText(OrderTools.Cart.getItems3().toString());
+        nameMain3.setText(OrderTools.Cart.getItems4());
+        numberMain3.setText(OrderTools.Cart.getItems5());
     }
 
     private void saveText() {
@@ -112,7 +109,7 @@ public class MainActivity3 extends AppCompatActivity {
     }
 
     public void ShowOver() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity3.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
         builder.setTitle("Заказ получен!")
                 .setMessage("Мы свяжемся с Вами в течении 10 минут для подтверждения заказа.")
                 .setCancelable(false)
@@ -120,8 +117,8 @@ public class MainActivity3 extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
-                                OrderTools.Corzina.cleanCart();
-                                Intent intent = new Intent(MainActivity3.this, MainActivity.class);
+                                OrderTools.Cart.cleanCart();
+                                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
                                 intent.putExtra("name", nameMain3.getText().toString());
                                 intent.putExtra("number", numberMain3.getText().toString());
                                 startActivity(intent);

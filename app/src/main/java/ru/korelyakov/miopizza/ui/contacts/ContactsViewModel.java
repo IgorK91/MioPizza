@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class ContactsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
     private MutableLiveData<String> mText2;
 
-    public SlideshowViewModel() {
+    public ContactsViewModel() {
         mText = new MutableLiveData<>();
         mText2 = new MutableLiveData<>();
         mText.setValue("Мы находимся по адресу: м.Парнас, улица Фёдора Абрамова, дом 8, корпус 1");

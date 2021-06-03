@@ -8,9 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import ru.korelyakov.miopizza.MainActivity;
 import ru.korelyakov.miopizza.R;
-import ru.korelyakov.miopizza.MainActivity2;
 
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,7 +45,7 @@ public class MenuFragment extends Fragment implements
                                     int position, long id) {
                 // TODO Auto-generated method stub
 
-                    Intent intent = new Intent(getContext(), MainActivity2.class);
+                    Intent intent = new Intent(getContext(), MenuActivity.class);
                     intent.putExtra("key", mAdapter.getItem(position));
                     startActivity(intent);
 
