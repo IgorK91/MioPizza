@@ -67,9 +67,9 @@ public class LoginActivity extends AppCompatActivity {
             loadText();
             if (!name.getText().toString().isEmpty() && !number.getText().toString().isEmpty() &&  !name.getText().toString().equals(" ") && !number.getText().toString().equals(" ")) {
                 CharSequence cc = name.getText();
-                OrderTools.Cart.addToCart4(cc.toString());
+                OrderTools.Cart.setName(cc.toString());
                 CharSequence ss = number.getText();
-                OrderTools.Cart.addToCart5(ss.toString());
+                OrderTools.Cart.setNumber(ss.toString());
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("name", name.getText().toString());
                 intent.putExtra("number", number.getText().toString());
@@ -87,9 +87,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         else{
             CharSequence cc = name.getText();
-            OrderTools.Cart.addToCart4(cc.toString());
+            OrderTools.Cart.setName(cc.toString());
             CharSequence ss = number.getText();
-            OrderTools.Cart.addToCart5(ss.toString());
+            OrderTools.Cart.setNumber(ss.toString());
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("name",name.getText().toString());
             intent.putExtra("number",number.getText().toString());

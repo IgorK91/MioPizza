@@ -162,12 +162,19 @@ public class MenuActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (textCartItemCount1 != null)
+            textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount1 = actionView.findViewById(R.id.cart_badge);
-        textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getItems6()));
+        textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;

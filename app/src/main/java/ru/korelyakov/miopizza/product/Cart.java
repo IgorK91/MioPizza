@@ -44,51 +44,51 @@ public class Cart implements Serializable {
         return productList;
     }
 
-    public void addToCart2(int integer) {
+    public void addToCoastList(int integer) {
         coastList.add(integer);
     }
 
-    public List<Integer> getItems2() {
+    public List<Integer> getCoastList() {
         return coastList;
     }
 
-    public void addToCart3(int integer) {
+    public void addToCountList(int integer) {
         countList.add(integer);
     }
 
-    public List<Integer> getItems3() {
+    public List<Integer> getCountList() {
         return countList;
     }
 
-    public void addToCart4(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getItems4() {
+    public String getName() {
         return name;
     }
 
-    public void addToCart5(String number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public String getItems5() {
+    public String getNumber() {
         return number;
     }
 
-    public void addToCart6(int countPosition) {
+    public void addPositions(int countPosition) {
         this.countPosition += countPosition;
     }
 
-    public int getItems6() {
+    public int getCountPosition() {
         return countPosition;
     }
 
-    public void addToCart7(String string) {
+    public void addToCartNameList(String string) {
         nameList.add(string);
     }
 
-    public List<String> getItems7() {
+    public List<String> getCartNameList() {
         return nameList;
     }
 }

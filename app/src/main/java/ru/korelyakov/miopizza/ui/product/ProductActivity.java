@@ -29,7 +29,6 @@ public class ProductActivity extends AppCompatActivity implements
    private int count = 1;
    Button buttonNormal, buttonBig;
    private int itog;
-   public  static int countPosition = 0;
    private int position;
    private Product product;
    private int currentApiVersion;
@@ -109,13 +108,12 @@ public class ProductActivity extends AppCompatActivity implements
     }
 
     public void Put (View view) {
-        countPosition++;
        // OrderTools.Cart.addToCart(MenuActivity.mAdapter.getItem(position));
-        OrderTools.Cart.addToCart7(name.getText().toString());
-        OrderTools.Cart.addToCart2(Integer.parseInt(coast.getText().toString()));
-        OrderTools.Cart.addToCart3(Integer.parseInt(countMain4.getText().toString()));
-        OrderTools.Cart.addToCart6(countPosition);
-        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
+        OrderTools.Cart.addToCartNameList(name.getText().toString());
+        OrderTools.Cart.addToCoastList(Integer.parseInt(coast.getText().toString()));
+        OrderTools.Cart.addToCountList(Integer.parseInt(countMain4.getText().toString()));
+        OrderTools.Cart.addPositions(count);
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
         onBackPressed();
     }
 
@@ -144,7 +142,7 @@ public class ProductActivity extends AppCompatActivity implements
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;

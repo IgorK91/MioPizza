@@ -172,12 +172,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (textCartItemCount != null)
+            textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;
