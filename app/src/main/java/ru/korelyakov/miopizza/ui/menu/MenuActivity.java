@@ -167,12 +167,7 @@ public class MenuActivity extends AppCompatActivity implements
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount1 = actionView.findViewById(R.id.cart_badge);
-        try{
-            textCartItemCount1.setText(OrderTools.Cart.getItems6().toString());
-        }
-        catch (Exception e){
-
-        }
+        textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getItems6()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
 import ru.korelyakov.miopizza.product.Product;
+import ru.korelyakov.miopizza.product.ProductType;
 import ru.korelyakov.miopizza.ui.order.OrderActivity;
 
 public class ProductActivity extends AppCompatActivity implements
@@ -25,13 +26,15 @@ public class ProductActivity extends AppCompatActivity implements
    // private MenuAdapter mAdapter;
    ImageView imageView;
    TextView name, structure, countMain4, coast, textCartItemCount;
-   Integer count = 1;
-   Button button1,button2;
-   Integer itogOne, itogTwo;
-   public  static Integer countPosition = 0;
-   int position;
-    Product product;
-    private int currentApiVersion;
+   private int count = 1;
+   Button buttonNormal, buttonBig;
+   private int itog;
+   public  static int countPosition = 0;
+   private int position;
+   private Product product;
+   private int currentApiVersion;
+   // для понимания большой товар или маленький
+   private boolean isBig = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,83 +74,67 @@ public class ProductActivity extends AppCompatActivity implements
         imageView.setImageResource(product.getPicture());
 
         countMain4 = findViewById(R.id.countMain4);
-        countMain4.setText(Integer.toString(count));
+        countMain4.setText(String.format("%s", count));
         coast = findViewById(R.id.coast);
-        coast.setText("0");
+        // подставим цену из продукта
+        coast.setText(String.format("%s", product.getNormalCoast()));
 
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button1.setBackgroundColor(Color.RED);
-        button2.setBackgroundColor(Color.WHITE);
-
-        coast.setText(product.getNormalCoast().toString());
-
+        buttonNormal = findViewById(R.id.buttonNormal);
+        buttonBig = findViewById(R.id.buttonBig);
+        buttonNormal.setBackgroundColor(Color.RED);
+        buttonBig.setBackgroundColor(Color.WHITE);
+        // если не пицца, нельзя менять размер
+        if (product.getProductType() != ProductType.Pizza) {
+            buttonNormal.setVisibility(View.GONE);
+            buttonBig.setVisibility(View.GONE);
         }
+    }
 
     public void Normal (View view) {
         count = 1;
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button1.setBackgroundColor(Color.RED);
-        button2.setBackgroundColor(Color.WHITE);
-        countMain4.setText(Integer.toString(count));
-        coast.setText(product.getNormalCoast().toString());
+        buttonNormal.setBackgroundColor(Color.RED);
+        buttonBig.setBackgroundColor(Color.WHITE);
+        countMain4.setText(String.format("%s", count));
+        coast.setText(String.format("%s", product.getNormalCoast()));
+        isBig = false;
     }
 
     public void Big (View view) {
         count = 1;
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button2.setBackgroundColor(Color.RED);
-        button1.setBackgroundColor(Color.WHITE);
-        countMain4.setText(Integer.toString(count));
-        coast.setText(product.getBigCoast().toString());
+        buttonBig.setBackgroundColor(Color.RED);
+        buttonNormal.setBackgroundColor(Color.WHITE);
+        countMain4.setText(String.format("%s", count));
+        coast.setText(String.format("%s", product.getBigCoast()));
+        isBig = true;
     }
 
     public void Put (View view) {
         countPosition++;
        // OrderTools.Cart.addToCart(MenuActivity.mAdapter.getItem(position));
-        CharSequence zz = name.getText();
-        OrderTools.Cart.addToCart7(zz.toString());
-        CharSequence cc = coast.getText();
-        CharSequence ss = countMain4.getText();
-        OrderTools.Cart.addToCart2(Integer.valueOf(cc.toString()));
-        OrderTools.Cart.addToCart3(Integer.valueOf(ss.toString()));
+        OrderTools.Cart.addToCart7(name.getText().toString());
+        OrderTools.Cart.addToCart2(Integer.parseInt(coast.getText().toString()));
+        OrderTools.Cart.addToCart3(Integer.parseInt(countMain4.getText().toString()));
         OrderTools.Cart.addToCart6(countPosition);
-        textCartItemCount.setText(String.valueOf(countPosition));
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
         onBackPressed();
     }
 
     public void Plus (View view) {
-        countMain4 = findViewById(R.id.countMain4);
         count++;
-        countMain4.setText(Integer.toString(count));
-        CharSequence zz = coast.getText();
-        itogOne = Integer.valueOf(zz.toString());
-        if (itogOne % 790 == 1) {
-            itogTwo = itogOne + 790;
-        }
-        else
-        {
-            itogTwo = itogOne + 500;
-        }
-        coast.setText(Integer.toString(itogTwo));
+        countMain4.setText(String.format("%s", count));
+        itog = Integer.parseInt(coast.getText().toString());
+        itog += isBig ? product.getBigCoast() : product.getNormalCoast();
+        coast.setText(String.format("%s", itog));
     }
 
     public void Minus (View view) {
-        countMain4 = findViewById(R.id.countMain4);
-        count--;
-        countMain4.setText(Integer.toString(count));
-        CharSequence zz = coast.getText();
-        itogOne = Integer.valueOf(zz.toString());
-        if (itogOne % 790 == 1) {
-            itogTwo = itogOne - 790;
+        if (count > 1) {
+            count--;
+            countMain4.setText(String.format("%s", count));
+            itog = Integer.parseInt(coast.getText().toString());
+            itog -= isBig ? product.getBigCoast() : product.getNormalCoast();
+            coast.setText(String.format("%s", itog));
         }
-        else
-        {
-            itogTwo = itogOne - 500;
-        }
-        coast.setText(Integer.toString(itogTwo));
     }
 
 
@@ -157,12 +144,7 @@ public class ProductActivity extends AppCompatActivity implements
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-        try{
-            textCartItemCount.setText(OrderTools.Cart.getItems6().toString());
-        }
-        catch (Exception e){
-
-        }
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;

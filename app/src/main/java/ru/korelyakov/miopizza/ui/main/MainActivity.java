@@ -177,12 +177,7 @@ public class MainActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-        try{
-            textCartItemCount.setText(OrderTools.Cart.getItems6().toString());
-        }
-        catch (Exception e){
-
-        }
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getItems6()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;

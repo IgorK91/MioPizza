@@ -36,7 +36,7 @@
         android:text=" " />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonNormal"
         android:onClick="Normal"
         android:layout_width="205dp"
         android:textColor="#000000"
@@ -44,7 +44,7 @@
         android:text="30 см" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonBig"
         android:onClick="Big"
         android:layout_width="205dp"
         android:textColor="#000000"

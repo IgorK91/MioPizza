@@ -14,7 +14,7 @@ public class Cart implements Serializable {
     private List<Integer> countList = new ArrayList<>();
     private String name;
     private String number;
-    private Integer countPosition;
+    private int countPosition;
     private List<String> nameList = new ArrayList<>();
 
     public void addToCart(Product product) {
@@ -44,7 +44,7 @@ public class Cart implements Serializable {
         return productList;
     }
 
-    public void addToCart2(Integer integer) {
+    public void addToCart2(int integer) {
         coastList.add(integer);
     }
 
@@ -52,7 +52,7 @@ public class Cart implements Serializable {
         return coastList;
     }
 
-    public void addToCart3(Integer integer) {
+    public void addToCart3(int integer) {
         countList.add(integer);
     }
 
@@ -76,11 +76,11 @@ public class Cart implements Serializable {
         return number;
     }
 
-    public void addToCart6(Integer countPosition) {
-        this.countPosition = countPosition;
+    public void addToCart6(int countPosition) {
+        this.countPosition += countPosition;
     }
 
-    public Integer getItems6() {
+    public int getItems6() {
         return countPosition;
     }
 

@@ -4,19 +4,19 @@ import android.graphics.drawable.Drawable;
 
 public class Product {
 
-    public String name;
+    private String name;
 
-    public ProductType productType;
+    private ProductType productType;
 
-    public String content;
+    private String content;
 
-    public Integer picture;
+    private int picture;
 
-    public Integer normalCoast;
+    private int normalCoast;
 
-    public Integer bigCoast;
+    private int bigCoast;
 
-    public Product(String name, ProductType productType, String content, Integer picture, Integer normalCoast, Integer bigCoast) {
+    public Product(String name, ProductType productType, String content, int picture, int normalCoast, int bigCoast) {
         this.name = name;
         this.productType = productType;
         this.content = content;
@@ -51,27 +51,27 @@ public class Product {
         this.content = content;
     }
 
-    public Integer getPicture() {
+    public int getPicture() {
         return picture;
     }
 
-    public void setPicture(Integer picture) {
+    public void setPicture(int picture) {
         this.picture = picture;
     }
 
-    public Integer getNormalCoast() {
+    public int getNormalCoast() {
         return normalCoast;
     }
 
-    public void setNormalCoast(Integer normalCoast) {
+    public void setNormalCoast(int normalCoast) {
         this.normalCoast = normalCoast;
     }
 
-    public Integer getBigCoast() {
+    public int getBigCoast() {
         return bigCoast;
     }
 
-    public void setBigCoast(Integer bigCoast) {
+    public void setBigCoast(int bigCoast) {
         this.bigCoast = bigCoast;
     }
 
