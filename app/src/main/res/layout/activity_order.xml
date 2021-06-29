@@ -8,51 +8,6 @@
     tools:context=".ui.order.OrderActivity">
 
 
-    <TextView
-        android:id="@+id/order"
-        android:textColor="#FBFAFA"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginBottom="244dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/coast"
-        android:textColor="#FBFAFA"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="244dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/count"
-        android:textColor="#FBFAFA"
-        android:layout_width="100dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="244dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/structure"
-        android:textColor="#FBFAFA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="472dp"
-        android:text="Состав заказа"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
     <EditText
         android:id="@+id/adress"
         android:layout_width="300dp"
@@ -76,7 +31,7 @@
         android:layout_marginEnd="136dp"
         android:layout_marginBottom="72dp"
         android:onClick="Order"
-        android:text="Отправить"
+        android:text="Заказать"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

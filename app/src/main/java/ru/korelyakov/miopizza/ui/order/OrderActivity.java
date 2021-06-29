@@ -20,16 +20,22 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ru.korelyakov.miopizza.R;
+import ru.korelyakov.miopizza.product.Cart;
 import ru.korelyakov.miopizza.product.OrderTools;
+import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.ui.main.MainActivity;
 
 public class OrderActivity extends AppCompatActivity {
 
-    TextView order, coast, structure, nameMain3, numberMain3, count, adress;
+    TextView order, coast, nameMain3, numberMain3, count, adress;
     SharedPreferences sPref;
     final String SAVED_TEXT = "saved_text";
     ArrayList<String> List = new ArrayList<String>();
     private int currentApiVersion;
+    public String test;
+    public String test2;
+    public String test3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +58,7 @@ public class OrderActivity extends AppCompatActivity {
                     });
         }
 
-        order = findViewById(R.id.order);
         coast = findViewById(R.id.coast);
-        count = findViewById(R.id.count);
-        structure = findViewById(R.id.structure);
         nameMain3 = findViewById(R.id.nameMain3);
         numberMain3= findViewById(R.id.numberMain3);
         adress = findViewById(R.id.adress);
@@ -63,8 +66,11 @@ public class OrderActivity extends AppCompatActivity {
         //order.setText(OrderTools.Cart.getCartNameList().toString());
         //coast.setText(OrderTools.Cart.getCoastList().toString());
         //count.setText(OrderTools.Cart.getCountList().toString());
-        //nameMain3.setText(OrderTools.Cart.getName());
+        nameMain3.setText(OrderTools.Cart.getName());
         numberMain3.setText(OrderTools.Cart.getNumber());
+        test = OrderTools.Cart.getAllNames();
+        test2 = OrderTools.Cart.getAllCount();
+        test3 = String.valueOf(OrderTools.Cart.getTotalPrice());
     }
 
     private void saveText() {
@@ -98,9 +104,14 @@ public class OrderActivity extends AppCompatActivity {
         List.add(adress.getText().toString());
         List.add(nameMain3.getText().toString());
         List.add(numberMain3.getText().toString());
-        List.add(order.getText().toString());
-        List.add(count.getText().toString());
-        List.add(coast.getText().toString());
+       // List.add(order.getText().toString());
+      //  List.add(count.getText().toString());
+      //  List.add(coast.getText().toString());
+
+        List.add(test);
+        List.add(test2);
+        List.add(test3);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("Заказы").push();

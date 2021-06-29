@@ -3,5 +3,5 @@
     android:dither="true"
     android:shape="oval">
 
-    <solid android:color="@color/orangeText" />
+    <solid android:color="@color/white" />
 </shape>

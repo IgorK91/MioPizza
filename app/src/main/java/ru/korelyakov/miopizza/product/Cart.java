@@ -53,6 +53,24 @@ public class Cart implements Serializable {
         return number;
     }
 
+    public String getAllNames() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Product product:
+                productList) {
+            stringBuilder.append(product.getName());
+        }
+        return stringBuilder.toString();
+    }
+
+    public String getAllCount() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Product product:
+                productList) {
+            stringBuilder.append(product.getCount());
+        }
+        return stringBuilder.toString();
+    }
+
     /**
      * Общая цена всех продуктов в корзине
      * @return

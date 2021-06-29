@@ -55,7 +55,7 @@ public class ConfirmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ReceiveViewHolder viewHolder = (ReceiveViewHolder) holder;
         Product product = productEntityModel.get(position);
         viewHolder.name.setText(product.getName());
-        viewHolder.description.setText(product.getContent());
+      //  viewHolder.description.setText(product.getContent());
         viewHolder.price.setText(String.format("%s", product.getFullPrice()));
         viewHolder.quantity.setText(String.format("%s", product.getCount()));
         viewHolder.image.setImageResource(product.getPicture());
