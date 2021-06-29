@@ -16,7 +16,7 @@
         android:layout_marginBottom="500dp"
         android:background="@null"
         android:ems="10"
-        android:hint="______________________________________"
+        android:hint="_____________________________________"
         android:textColor="#FBFAFA"
         android:textColorHint="#FBFAFA"
         android:textSize="15sp"
