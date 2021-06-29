@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ru.korelyakov.miopizza.ui.confirm.CartFragment;
 import ru.korelyakov.miopizza.ui.order.OrderActivity;
 import ru.korelyakov.miopizza.ui.product.ProductActivity;
 import ru.korelyakov.miopizza.R;
@@ -184,7 +185,8 @@ public class MenuActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart:
-                Intent intent = new Intent(this, OrderActivity.class);
+                //  Intent intent = new Intent(this, OrderActivity.class);
+                Intent intent = new Intent(this, CartFragment.class);
                 startActivity(intent);
                 return true;
             default:

@@ -24,6 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import ru.korelyakov.miopizza.ui.confirm.CartFragment;
 import ru.korelyakov.miopizza.ui.order.OrderActivity;
 import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
@@ -205,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart:
-                Intent intent = new Intent(this, OrderActivity.class);
+                //  Intent intent = new Intent(this, OrderActivity.class);
+                Intent intent = new Intent(this, CartFragment.class);
                 startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);

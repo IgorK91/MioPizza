@@ -19,6 +19,7 @@ import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
 import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.product.ProductType;
+import ru.korelyakov.miopizza.ui.confirm.CartFragment;
 import ru.korelyakov.miopizza.ui.order.OrderActivity;
 
 public class ProductActivity extends AppCompatActivity implements
@@ -156,7 +157,8 @@ public class ProductActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart:
-                Intent intent = new Intent(this, OrderActivity.class);
+              //  Intent intent = new Intent(this, OrderActivity.class);
+                Intent intent = new Intent(this, CartFragment.class);
                 startActivity(intent);
                 return true;
             default:
