@@ -19,8 +19,7 @@ import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
 import ru.korelyakov.miopizza.product.Product;
 import ru.korelyakov.miopizza.product.ProductType;
-import ru.korelyakov.miopizza.ui.confirm.CartFragment;
-import ru.korelyakov.miopizza.ui.order.OrderActivity;
+import ru.korelyakov.miopizza.ui.confirm.ConfirmActivity;
 
 public class ProductActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
@@ -109,12 +108,10 @@ public class ProductActivity extends AppCompatActivity implements
     }
 
     public void Put (View view) {
-       // OrderTools.Cart.addToCart(MenuActivity.mAdapter.getItem(position));
-        OrderTools.Cart.addToCartNameList(name.getText().toString());
-        OrderTools.Cart.addToCoastList(Integer.parseInt(coast.getText().toString()));
-        OrderTools.Cart.addToCountList(Integer.parseInt(countMain4.getText().toString()));
-        OrderTools.Cart.addPositions(count);
-        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+        product.setCount(count);
+        product.setBig(isBig);
+        OrderTools.Cart.addToCart(product);
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getSize()));
         onBackPressed();
     }
 
@@ -143,7 +140,7 @@ public class ProductActivity extends AppCompatActivity implements
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+        textCartItemCount.setText(String.format("%s", OrderTools.Cart.getSize()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;
@@ -158,7 +155,7 @@ public class ProductActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.cart:
               //  Intent intent = new Intent(this, OrderActivity.class);
-                Intent intent = new Intent(this, CartFragment.class);
+                Intent intent = new Intent(this, ConfirmActivity.class);
                 startActivity(intent);
                 return true;
             default:

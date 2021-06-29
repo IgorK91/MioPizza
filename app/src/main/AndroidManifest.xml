@@ -36,7 +36,7 @@
         <activity
             android:name=".ui.order.OrderActivity"
             android:label="@string/activity_main3"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu.MenuActivity"
             android:label="@string/activity_main2"
@@ -45,7 +45,12 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MioPizza.NoActionBar"></activity>
+            android:theme="@style/Theme.MioPizza.NoActionBar" />
+        <activity
+            android:name=".ui.confirm.ConfirmActivity"
+            android:label="@string/activity_main3"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

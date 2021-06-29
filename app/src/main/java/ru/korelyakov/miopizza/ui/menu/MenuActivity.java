@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ru.korelyakov.miopizza.ui.confirm.CartFragment;
-import ru.korelyakov.miopizza.ui.order.OrderActivity;
+import ru.korelyakov.miopizza.ui.confirm.ConfirmActivity;
 import ru.korelyakov.miopizza.ui.product.ProductActivity;
 import ru.korelyakov.miopizza.R;
 import ru.korelyakov.miopizza.product.OrderTools;
@@ -166,7 +165,7 @@ public class MenuActivity extends AppCompatActivity implements
     public void onResume() {
         super.onResume();
         if (textCartItemCount1 != null)
-            textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+            textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getSize()));
     }
 
     @Override
@@ -175,7 +174,7 @@ public class MenuActivity extends AppCompatActivity implements
         final MenuItem menuItem = menu.findItem(R.id.cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount1 = actionView.findViewById(R.id.cart_badge);
-        textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getCountPosition()));
+        textCartItemCount1.setText(String.format("%s", OrderTools.Cart.getSize()));
         setupBadge();
         actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
         return true;
@@ -186,7 +185,7 @@ public class MenuActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.cart:
                 //  Intent intent = new Intent(this, OrderActivity.class);
-                Intent intent = new Intent(this, CartFragment.class);
+                Intent intent = new Intent(this, ConfirmActivity.class);
                 startActivity(intent);
                 return true;
             default:

@@ -30,13 +30,13 @@ public class ConfirmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.productEntityModel = productEntityModel;
     }
 
-    public void updateItem(int position, Product cartItemsEntityModel) {
+    //public void updateItem(int position, Product cartItemsEntityModel) {
 
     //    if(cartItemsEntityModel.getQuantity() > 0) {
-            productEntityModel.set(position, cartItemsEntityModel);
+            //productEntityModel.set(position, cartItemsEntityModel);
  //           CartHelper.getCart().update(cartItemsEntityModel.getProduct(), cartItemsEntityModel.getQuantity());
    //     Product.getName().
-        }
+        //}
       //  else {
 //            CartHelper.getCart().remove(productEntityModel.get(position).getProduct());
 //            onItemClickListener.onUpdateList();
@@ -53,6 +53,13 @@ public class ConfirmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         ReceiveViewHolder viewHolder = (ReceiveViewHolder) holder;
+        Product product = productEntityModel.get(position);
+        viewHolder.name.setText(product.getName());
+        viewHolder.description.setText(product.getContent());
+        viewHolder.price.setText(String.format("%s", product.getFullPrice()));
+        viewHolder.quantity.setText(String.format("%s", product.getCount()));
+        viewHolder.image.setImageResource(product.getPicture());
+
       //  viewHolder.name.setText(productEntityModel.get(position).getProduct().getName());
       //  viewHolder.description.setText(productEntityModel.get(position).getProduct().getDescription());
      //   viewHolder.price.setText(String.format(context.getString(R.string.dollars_format), productEntityModel.get(position).getProduct().getPrice()));
@@ -86,13 +93,13 @@ public class ConfirmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(view -> {
-                onItemClickListener.onItemClick(productEntityModel.get(getAdapterPosition()));
+                onItemClickListener.onItemClick(getAdapterPosition());
             });
                  minus.setOnClickListener(view -> {
-                     onItemClickListener.onItemMinusClicked(getAdapterPosition(), productEntityModel.get(getAdapterPosition()));
+                     onItemClickListener.onItemMinusClicked(getAdapterPosition());
                  });
             plus.setOnClickListener(view -> {
-                onItemClickListener.onItemPlusClicked(getAdapterPosition(), productEntityModel.get(getAdapterPosition()));
+                onItemClickListener.onItemPlusClicked(getAdapterPosition());
             });
         }
     }
@@ -102,13 +109,14 @@ public class ConfirmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public interface OnItemClickListener {
-        int getViewId();
 
-        void onViewCreated(View view);
+        //int getViewId();
 
-        void onItemClick(Product cartItemsEntityModel);
-        void onItemPlusClicked(int position, Product cartItemsEntityModel);
-        void onItemMinusClicked(int position, Product cartItemsEntityModel);
-        void onUpdateList();
+        //void onViewCreated(View view);
+
+        void onItemClick(int position);
+        void onItemPlusClicked(int position);
+        void onItemMinusClicked(int position);
+        //void onUpdateList();
     }
 }

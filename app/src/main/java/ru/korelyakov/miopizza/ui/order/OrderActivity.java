@@ -60,10 +60,10 @@ public class OrderActivity extends AppCompatActivity {
         numberMain3= findViewById(R.id.numberMain3);
         adress = findViewById(R.id.adress);
 
-        order.setText(OrderTools.Cart.getCartNameList().toString());
-        coast.setText(OrderTools.Cart.getCoastList().toString());
-        count.setText(OrderTools.Cart.getCountList().toString());
-        nameMain3.setText(OrderTools.Cart.getName());
+        //order.setText(OrderTools.Cart.getCartNameList().toString());
+        //coast.setText(OrderTools.Cart.getCoastList().toString());
+        //count.setText(OrderTools.Cart.getCountList().toString());
+        //nameMain3.setText(OrderTools.Cart.getName());
         numberMain3.setText(OrderTools.Cart.getNumber());
     }
 

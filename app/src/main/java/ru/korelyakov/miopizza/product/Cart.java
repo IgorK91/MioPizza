@@ -10,12 +10,8 @@ import ru.korelyakov.miopizza.product.ProductType;
 public class Cart implements Serializable {
 
     private List<Product> productList = new ArrayList<>();
-    private List<Integer> coastList = new ArrayList<>();
-    private List<Integer> countList = new ArrayList<>();
     private String name;
     private String number;
-    private int countPosition;
-    private List<String> nameList = new ArrayList<>();
 
     public void addToCart(Product product) {
         productList.add(product);
@@ -27,9 +23,6 @@ public class Cart implements Serializable {
 
     public void cleanCart() {
         productList.clear();
-        nameList.clear();
-        coastList.clear();
-        countList.clear();
     }
 
     public Product getItem(int index) {
@@ -42,22 +35,6 @@ public class Cart implements Serializable {
 
     public List<Product> getItems() {
         return productList;
-    }
-
-    public void addToCoastList(int integer) {
-        coastList.add(integer);
-    }
-
-    public List<Integer> getCoastList() {
-        return coastList;
-    }
-
-    public void addToCountList(int integer) {
-        countList.add(integer);
-    }
-
-    public List<Integer> getCountList() {
-        return countList;
     }
 
     public void setName(String name) {
@@ -76,20 +53,30 @@ public class Cart implements Serializable {
         return number;
     }
 
-    public void addPositions(int countPosition) {
-        this.countPosition += countPosition;
+    /**
+     * Общая цена всех продуктов в корзине
+     * @return
+     */
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Product product:
+             productList) {
+            totalPrice += product.getFullPrice();
+        }
+        return totalPrice;
     }
 
-    public int getCountPosition() {
-        return countPosition;
-    }
-
-    public void addToCartNameList(String string) {
-        nameList.add(string);
-    }
-
-    public List<String> getCartNameList() {
-        return nameList;
+    /**
+     * Общее количество всех продуктов в корзине
+     * @return
+     */
+    public int getTotalCount() {
+        int totalCount = 0;
+        for (Product product:
+                productList) {
+            totalCount += product.getCount();
+        }
+        return totalCount;
     }
 }
 //g

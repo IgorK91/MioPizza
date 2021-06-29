@@ -15,5 +15,6 @@
 
     <string name="activity_main2">Меню</string>
     <string name="activity_main3">Корзина</string>
+    <string name="cart_success_message">\"Заказ успешно оформлен\"</string>
 
 </resources>
