@@ -19,7 +19,8 @@
         android:gravity="center"
         android:horizontalSpacing="300dp"
         android:numColumns="1"
-        android:verticalSpacing="50dp" >
+        android:verticalSpacing="50dp"
+        android:layout_marginBottom="40dp">
     </GridView>
 
 </LinearLayout>

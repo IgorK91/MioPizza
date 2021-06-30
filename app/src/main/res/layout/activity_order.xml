@@ -7,69 +7,73 @@
     android:background="@drawable/fon"
     tools:context=".ui.order.OrderActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/nameMain3"
+            android:textColor="#FBFAFA"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="TextView"
+
+             />
+
+        <TextView
+            android:id="@+id/numberMain3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#FBFAFA"
+            android:text="TextView"
+             />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:textColor="#FBFAFA"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="1dp"
+            android:text="Введите адрес доставки"
+            app:layout_constraintHorizontal_bias="1.0"
+         />
+
 
     <EditText
         android:id="@+id/adress"
-        android:layout_width="300dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@null"
         android:ems="10"
         android:hint="_____________________________________"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
         android:textColor="#FBFAFA"
         android:textColorHint="#FBFAFA"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="72dp"
-        android:onClick="Order"
-        android:text="Заказать"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+      />
 
-    <TextView
-        android:id="@+id/nameMain3"
-        android:textColor="#FBFAFA"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="43dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/numberMain3"
-        app:layout_constraintEnd_toEndOf="@+id/numberMain3"
-        app:layout_constraintStart_toStartOf="@+id/numberMain3"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+            app:backgroundTint="#FFFFFF"
+            android:id="@+id/button"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            app:cornerRadius="48dp"
+            android:onClick="Order"
+            android:text="Заказать"
+            android:layout_marginTop = "300dp"
+            android:layout_marginBottom = "100dp"
+         />
 
-    <TextView
-        android:id="@+id/numberMain3"
-        android:textColor="#FBFAFA"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/nameMain3" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:textColor="#FBFAFA"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        android:text="Введите адрес доставки"
-        app:layout_constraintBottom_toTopOf="@+id/adress"
-        app:layout_constraintEnd_toEndOf="@+id/adress"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/adress"
-        app:layout_constraintTop_toBottomOf="@+id/numberMain3" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

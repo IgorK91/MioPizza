@@ -6,10 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.onesignal.OneSignal;
 
 import ru.korelyakov.miopizza.ui.main.MainActivity;
 import ru.korelyakov.miopizza.R;
@@ -23,14 +27,23 @@ public class LoginActivity extends AppCompatActivity {
     public static String SAVED_NUMBER = "";
     String clear = "";
     private int currentApiVersion;
+    private static final String ONESIGNAL_APP_ID = "b645081a-e832-4b85-8c5b-3a4831cf0bd8";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
+
         name = findViewById(R.id.name);
         number = findViewById(R.id.number);
+        //PhoneNumberUtils.formatNumber(number.getText().toString());
+        number.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         run = findViewById(R.id.run);
 
         currentApiVersion = android.os.Build.VERSION.SDK_INT;
@@ -83,6 +96,11 @@ public class LoginActivity extends AppCompatActivity {
         if (name.length() == 0){
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Данные не заполнены", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if(number.length()!=15){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Ошибка! Проверьте номер телефона", Toast.LENGTH_SHORT);
             toast.show();
         }
         else{
