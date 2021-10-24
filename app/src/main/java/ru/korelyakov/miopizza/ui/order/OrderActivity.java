@@ -37,6 +37,7 @@ public class OrderActivity extends AppCompatActivity {
     public String test3;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,8 +91,8 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         saveText();
-             super.onBackPressed();
-             finish();
+        super.onBackPressed();
+        finish();
     }
 
     public void Order(View v) {
@@ -104,9 +105,9 @@ public class OrderActivity extends AppCompatActivity {
         List.add(adress.getText().toString());
         List.add(nameMain3.getText().toString());
         List.add(numberMain3.getText().toString());
-       // List.add(order.getText().toString());
-      //  List.add(count.getText().toString());
-      //  List.add(coast.getText().toString());
+        // List.add(order.getText().toString());
+        //  List.add(count.getText().toString());
+        //  List.add(coast.getText().toString());
 
         List.add(test);
         List.add(test2);
@@ -114,8 +115,14 @@ public class OrderActivity extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("Заказы").push();
-        myRef.setValue(List);
+        DatabaseReference myRef = database.getReference().child("Заказы").child(List.get(0));
+        myRef.child("time").setValue(List.get(0));
+        myRef.child("address").setValue(List.get(1));
+        myRef.child("name").setValue(List.get(2));
+        myRef.child("number").setValue(List.get(3));
+        myRef.child("title").setValue(List.get(4));
+        myRef.child("quantity").setValue(List.get(5));
+        myRef.child("coast").setValue(List.get(6));
         ShowOver();
     }
 
