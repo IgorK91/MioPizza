@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -123,6 +124,10 @@ public class OrderActivity extends AppCompatActivity {
         myRef.child("title").setValue(List.get(4));
         myRef.child("quantity").setValue(List.get(5));
         myRef.child("coast").setValue(List.get(6));
+
+
+        Task<Void> myRef2 = database.getReference().child("Клиенты").child(List.get(3)).setValue("0");
+
         ShowOver();
     }
 
